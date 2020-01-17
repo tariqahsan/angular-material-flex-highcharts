@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+$primary: rgb(111, 0, 255);
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/assets/Montserrat/Montserrat-Light.ttf) format("truetype");
+    font-weight:300;
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url(/assets/Nunito/Nunito-Light.ttf) format("truetype");
+    font-weight:300;
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', 'sans-serif';
+    font-size: 18px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+// body {
+//     margin: 0;
+//     font-family: 'Nunito', 'sans-serif';
+//     font-size: 18px;
+//     background-image: url(20191229_101201.jpg);
+//     background-position: center;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     min-height: 100vh;
+// }
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.app-header {
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+  }
+
+header {
+    background: $primary;
+    padding: 1em 0;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+    a.logo {
+        font-weight: bold;
+    }
+
+    nav {
+        float: right;
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            display: flex;
+
+            li a {
+                padding: 1em;
+
+                &:hover {
+                    background: darken($primary, 10%);
+                }
+            }
+        }
+    }
+}
+
+h1 {
+    margin-top: 2em;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
