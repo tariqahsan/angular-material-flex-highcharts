@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PostsService } from '../posts.service';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+
+export interface User {
+
+  id: number;
+  name: string;
+  experience: number;
+  domain: string;
+}
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +17,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  dataSource: any;
+
+  displayedColumns: string[] = ['id', 'name', 'experience', 'domain'];
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
+
+    this.postsService.getUsers().subscribe(
+        (data) => {
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.sort = this.sort;
+        }
+    )
+
   }
 
 }
