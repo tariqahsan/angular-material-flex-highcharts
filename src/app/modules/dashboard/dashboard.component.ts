@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatPaginatorIntl } from '@angular/material';
+import { CustomPaginator } from './CustomPaginator';
+import { CustomMatPaginatorIntl } from './CustomMatPaginatorIntl';
+import {PageEvent} from '@angular/material';
 
 export interface PeriodicElement {
   name: string;
@@ -35,8 +38,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
+  // providers: [
+  //   { provide: MatPaginatorIntl, useValue: CustomMatPaginatorIntl() } ]
 })
+
 export class DashboardComponent implements OnInit {
+
+  // MatPaginator Inputs
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
 
   bigChart = [];
   cards = [];
