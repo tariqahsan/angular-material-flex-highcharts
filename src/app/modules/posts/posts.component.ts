@@ -17,6 +17,16 @@ export interface User {
 })
 export class PostsComponent implements OnInit {
 
+  // MatPaginator Inputs
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+  //cards = [];
+  cards: Observable<Post[]>;
+
   dataSource: any;
 
   displayedColumns: string[] = ['id', 'name', 'experience', 'domain'];
